@@ -52,10 +52,21 @@ function yum_install(){
 	#yum -y upgrade
 	yum -y remove php* 
 	yum -y remove asterisk*
-	yum -y install uuid-c++ libuuid-devel uuid-c++-devel uuid-devel bash openssl openssh-server openssh-clients tcpdump wget mlocate openvpn ghostscript mailx cpan crontabs Percona-Server-server-55 Percona-Server-devel-55 Percona-Server-client-55 glibc gcc-c++ libtermcap-devel newt newt-devel ncurses ncurses-devel libtool libxml2-devel kernel-devel kernel-PAE-devel subversion flex libstdc++-devel libstdc++  unzip sharutils openssl-devel make kernel-header
+	yum -y install sqlite-devel uuid-c++ libuuid-devel uuid-c++-devel uuid-devel bash openssl openssh-server openssh-clients tcpdump wget mlocate openvpn ghostscript mailx cpan crontabs Percona-Server-server-55 Percona-Server-devel-55 Percona-Server-client-55 glibc gcc-c++ libtermcap-devel newt newt-devel ncurses ncurses-devel libtool libxml2-devel kernel-devel kernel-PAE-devel subversion flex libstdc++-devel libstdc++  unzip sharutils openssl-devel make kernel-header
 	chkconfig mysql on
 	chkconfig crond on
 	service crond start
+}
+
+function jansson_install(){
+	echo -e "\e[32mStarting Install jansson \e[m"
+	cd /usr/src
+	if [ ! -e ./jansson-2.7.tar.gz ]; then
+		wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
+	fi
+	tar -xvzf jansson-2.7.tar.gz
+	cd jansson-2.7
+	./configure &make&make install
 }
 
 function ioncube_install(){
@@ -328,7 +339,8 @@ function asterisk_install() {
 	sed -i "s/#AST_GROUP/AST_GROUP/" /etc/init.d/asterisk
 
 	sed -i 's/;enable=yes/enable=no/' /etc/asterisk/cdr.conf
-
+	cp -f /usr/lib/libasteriskssl.so.1 /usr/lib64
+	cp -f /usr/local/lib/libjansson.so.4 /usr/lib64
 	# set AMI user
 cat > /etc/asterisk/manager.conf << EOF
 [general]
@@ -671,6 +683,7 @@ function run() {
 	fax_install
 	dahdi_install
 	libpri_install
+	jansson_install
 	asterisk_install
 	lame_install
 	mpg123_install
