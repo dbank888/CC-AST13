@@ -66,7 +66,9 @@ function jansson_install(){
 	fi
 	tar -xvzf jansson-2.7.tar.gz
 	cd jansson-2.7
-	./configure &make&make install
+	./configure
+	make
+	make install
 }
 
 function ioncube_install(){
