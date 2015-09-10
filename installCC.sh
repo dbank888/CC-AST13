@@ -659,12 +659,12 @@ function run() {
 	fi
 
 	wget $downloadmirror/ucservercc13 -t 5
-	if [ ! -e ./ucservercc1 ]; then
+	if [ ! -e ./ucservercc13 ]; then
 		echo "failed to get version infromation,please try again"
 		exit 1;
 	fi
-	. ./ucservercc1
-	/bin/rm -rf ./ucservercc1
+	. ./ucservercc13
+	/bin/rm -rf ./ucservercc13
 	newRepo_install
 	yum_install
 	php_install
