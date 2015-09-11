@@ -328,6 +328,7 @@ function asterisk_install() {
 	fi
 
 	cd asterisk-$asteriskver
+	./bootstrap.sh
 	./configure '-disable-xmldoc'
 	make
 	make install
