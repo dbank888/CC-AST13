@@ -255,7 +255,7 @@ function dahdi_install() {
 		exit 1
 	fi
 
-	cd dahdi-linux-complete-$dahdiver
+	cd dahdi-linux-$dahdiver
 	make
 	if [ $? != 0 ]; then
 		yum -y update kernel
