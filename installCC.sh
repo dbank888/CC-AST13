@@ -666,7 +666,7 @@ function AST13PATCH() {
 	cd /usr/src
 	rm -rf /usr/lib/asterisk/modules/codec_g729-ast18-gcc4-glibc-x86_64-pentium4.so
 	wget http://asterisk.hosting.lv/bin/codec_g729-ast130-gcc4-glibc-x86_64-pentium4.so
-	cp codec_g729-ast130-gcc4-glibc-x86_64-pentium4.so /usr/lib/asterisk/modules/
+	cp /usr/src/codec_g729-ast130-gcc4-glibc-x86_64-pentium4.so /usr/lib/asterisk/modules/
 	cd /etc/asterisk
 	cat > /etc/asterisk/modules.conf << EOF
 	[modules]
