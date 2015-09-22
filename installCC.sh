@@ -307,6 +307,19 @@ function nginx_install(){
 	echo -e "\e[32mNginx Install OK!\e[m"
 }
 
+function opuslib_install() {
+	echo -e "\e[32mStarting Install OPUS LIB\e[m"
+	cd /usr/src
+	if [ ! -e opus-1.1.tar.gz ]; then
+		wget http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz
+	fi
+	tar -xvzf opus-1.1.tar.gz
+	cd opus-1.1
+	./configure
+	make
+	make install
+}
+
 function asterisk_install() {
 	echo -e "\e[32mStarting Install Asterisk\e[m"
 	useradd -u 500 -c "Asterisk PBX" -d /var/lib/asterisk asterisk
@@ -329,7 +342,7 @@ function asterisk_install() {
 
 	cd asterisk-$asteriskver
 	./bootstrap.sh
-	./configure '-disable-xmldoc'
+	./configure --disable-xmldoc --with-opus=/usr/local/include/opus/
 	make
 	make install
 	make samples
@@ -702,6 +715,7 @@ function run() {
 	fax_install
 	dahdi_install
 	libpri_install
+	opuslib_install
 	jansson_install
 	asterisk_install
 	lame_install
