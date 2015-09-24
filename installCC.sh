@@ -318,6 +318,7 @@ function opuslib_install() {
 	./configure
 	make
 	make install
+	ln -s /usr/local/lib/libopus.so.0 /lib64/libopus.so.0
 }
 
 function asterisk_install() {
