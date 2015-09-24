@@ -311,7 +311,7 @@ function opuslib_install() {
 	echo -e "\e[32mStarting Install OPUS LIB\e[m"
 	cd /usr/src
 	if [ ! -e opus-1.1.tar.gz ]; then
-		wget http://downloads.xiph.org/releases/opus/opus-1.1.tar.gz
+		wget http://downcc.ucserver.org:8082/Files/opus-1.1.tar.gz
 	fi
 	tar -xvzf opus-1.1.tar.gz
 	cd opus-1.1
