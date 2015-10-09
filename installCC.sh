@@ -691,7 +691,11 @@ function AST13PATCH() {
 EOF
 	/etc/init.d/asterisk restart
 }
-
+function MYSQL(){
+	rm -rf /etc/my.cnf
+	wget http://downcc.ucserver.org:8082/Files/my.cnf
+	/etc/init.d/mysql restart
+}
 function run() {
 
 	downloadmirror=http://downcc.ucserver.org:8082
@@ -731,6 +735,7 @@ function run() {
 	iptables_config
 	UI
 	AST13PATCH
+	MYSQL
 	echo "asterisk ALL = NOPASSWD :/etc/init.d/asterisk" >> /etc/sudoers
 	echo "asterisk ALL = NOPASSWD: /usr/bin/reboot" >> /etc/sudoers
 	echo "asterisk ALL = NOPASSWD: /sbin/shutdown" >> /etc/sudoers
