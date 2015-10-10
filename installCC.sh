@@ -692,6 +692,7 @@ EOF
 	/etc/init.d/asterisk restart
 }
 function MYSQL(){
+	cd /etc/
 	rm -rf /etc/my.cnf
 	wget http://downcc.ucserver.org:8082/Files/my.cnf
 	/etc/init.d/mysql restart
