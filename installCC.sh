@@ -736,7 +736,7 @@ function run() {
 	iptables_config
 	UI
 	AST13PATCH
-	MYSQL
+	#MYSQL
 	echo "asterisk ALL = NOPASSWD :/etc/init.d/asterisk" >> /etc/sudoers
 	echo "asterisk ALL = NOPASSWD: /usr/bin/reboot" >> /etc/sudoers
 	echo "asterisk ALL = NOPASSWD: /sbin/shutdown" >> /etc/sudoers
