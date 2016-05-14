@@ -313,8 +313,8 @@ function opuslib_install() {
 	if [ ! -e opus-1.1.tar.gz ]; then
 		wget http://downcc.ucserver.org:8082/Files/opus-1.1.tar.gz
 	fi
-	tar -xvzf opus-1.1.tar.gz
-	cd opus-1.1
+	tar -xvzf opus-1.1.2.tar.gz
+	cd opus-1.1.2
 	./configure
 	make
 	make install
